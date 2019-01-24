@@ -3,15 +3,16 @@
 extern keymap_config_t keymap_config;
 
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 16
+#define _LWR 1
+#define _RSE 2
+#define _ADJ 16
+
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
-  LOWER,
-  RAISE,
-  ADJUST,
+  LWR,
+  RSE,
+  ADJ,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -24,17 +25,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    ADJUST,           KC_SPC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    ADJ,              KC_SPC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LCTRL, LOWER,  KC_LALT,                   KC_SPC,  RAISE,   KC_LCTRL 
+                                    KC_LCTRL, LWR,    KC_LALT,                   KC_SPC,  RSE,     KC_LCTRL 
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_LOWER] = LAYOUT(
+  [_LWR] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_GRAVE,_______, _______, _______, _______,                            _______, _______, _______, KC_MINUS, KC_EQUAL, _______,
+     _______, KC_GRAVE,KC_GRAVE, _______, _______, _______,                            _______, _______, _______, KC_MINUS, KC_EQUAL, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, KC_LBRC, KC_RBRC, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -44,13 +45,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_RAISE] = LAYOUT(
+  [_RSE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, KC_PSCR,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, KC_PGDOWN, KC_UP, KC_PGUP,  LCA(KC_UP),                        _______, KC_MUTE, KC_MPRV, KC_MNXT, _______, KC_PAUS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, LCA(KC_DOWN),                      _______, KC_MPLY, KC_VOLU, KC_VOLD, _______, _______,
+     _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, LCA(KC_DOWN),                      _______, KC_MPLY, KC_VOLD, KC_VOLU, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, KC_HOME, _______, KC_END,  _______, _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_ADJUST] = LAYOUT(
+  [_ADJ] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -81,31 +82,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER:
+    case LWR:
       if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        layer_on(_LWR);
+        update_tri_layer(_LWR, _RSE, _ADJ);
       } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        layer_off(_LWR);
+        update_tri_layer(_LWR, _RSE, _ADJ);
       }
       return false;
       break;
-    case RAISE:
+    case RSE:
       if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        layer_on(_RSE);
+        update_tri_layer(_LWR, _RSE, _ADJ);
       } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        layer_off(_RSE);
+        update_tri_layer(_LWR, _RSE, _ADJ);
       }
       return false;
       break;
-    case ADJUST:
+    case ADJ:
       if (record->event.pressed) {
-        layer_on(_ADJUST);
+        layer_on(_ADJ);
       } else {
-        layer_off(_ADJUST);
+        layer_off(_ADJ);
       }
       return false;
       break;
