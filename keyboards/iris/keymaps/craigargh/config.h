@@ -35,3 +35,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
 #define TAPPING_TOGGLE 3
+#define MOUSEKEY_MAX_SPEED 6
+
